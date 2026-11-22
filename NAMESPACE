@@ -38,7 +38,8 @@ exportMethods(setOptionsList)
 exportMethods(show)
 importFrom(methods,
   is,
-  new
+  new,
+  show
 )
 importFrom(rlang,is_empty)
 importFrom(rmarkdown,render)

@@ -1,3 +1,8 @@
+Changes in version 1.25.2 (2026-11-20)
++ import the show generic for namespace loading with only stated dependencies
++ handle missing, NA and empty optional author metadata
++ test author parsing independently of the optional distill dependency
+
 Changes in version 1.25.1 (2026-11-19)
 + fix vignette metadata and add a concise S4 show method
 + check the optional distill dependency without attaching it

@@ -85,6 +85,7 @@ easyreporting <- function(filenamePath, title, author, optionList=NULL,
 
 #' Display an easyreporting object
 #'
+#' @importFrom methods show
 #' @param object an easyreporting class object.
 #' @return The object, invisibly.
 #' @export

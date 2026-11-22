@@ -9,10 +9,15 @@
         a.str <- paste(a.str, a$given, sep=" ")
         a.str <- paste(a.str, a$family,  sep=" ")
         ifelse(!is.null(a$email), a.str <- paste(a.str, a$email, "\"\n", sep=" " ), a.str <- paste0(a.str, "\"\n"))
-        if(!is.na(a$comment["ORCID"])) a.str <- paste0(a.str, "        orcid_id: ", a$comment["ORCID"], "\n")
-        if(!is.na(a$comment["affiliation"])) a.str <- paste0(a.str, "        affiliation: ", a$comment["affiliation"], "\n")
-        if(!is.na(a$comment["affiliation_url"])) a.str <- paste0(a.str, "        affiliation_url: ", a$comment["affiliation_url"], "\n")
-        if(!is.na(a$comment["url"])) a.str <- paste0(a.str, "        url: ", a$comment["url"], "\n")
+        fields <- c(ORCID="orcid_id", affiliation="affiliation",
+                    affiliation_url="affiliation_url", url="url")
+        for (field in names(fields)) {
+            value <- a$comment[field]
+            if (length(value) == 1L && !is.na(value) && nzchar(value)) {
+                a.str <- paste0(a.str, "        ", fields[[field]], ": ",
+                                value, "\n")
+            }
+        }
         return(a.str)
     })
     return(paste(authors.list, collapse=""))
